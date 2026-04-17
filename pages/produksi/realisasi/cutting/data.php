@@ -12,7 +12,14 @@ if ($page == 'cari-noop') {
     $exact   = mysqli_real_escape_string($conn, $_GET['exact_code'] ?? '');
     $exclude = mysqli_real_escape_string($conn, $_GET['exclude'] ?? '');
 
+    // 1. Pecah exclude menjadi array
     $excludeArr = array_filter(array_map('trim', explode(',', $exclude)));
+
+    // 2. KUNCI: Hapus kata yang sedang dicari ($q) dari daftar exclude
+    // Agar dia tidak memblokir dirinya sendiri saat sedang diketik
+    if (($key = array_search($q, $excludeArr)) !== false) {
+        unset($excludeArr[$key]);
+    }
 
     $sql = "SELECT DISTINCT no_op, exact_code, exact_name 
             FROM transaksi_mps 
@@ -22,12 +29,13 @@ if ($page == 'cari-noop') {
         $sql .= " AND exact_code = '$exact'";
     }
 
+    // 3. Masukkan ke NOT IN hanya jika masih ada sisa exclude lain
     if (!empty($excludeArr)) {
         $ops = "'" . implode("','", $excludeArr) . "'";
         $sql .= " AND no_op NOT IN ($ops)";
     }
 
-    $sql .= " LIMIT 10 ";
+    $sql .= " LIMIT 10";
 
     $query = mysqli_query($conn, $sql);
     $data = [];
