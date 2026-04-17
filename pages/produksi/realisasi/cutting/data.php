@@ -27,7 +27,7 @@ if ($page == 'cari-noop') {
         $sql .= " AND no_op NOT IN ($ops)";
     }
 
-    $sql .= " LIMIT 10";
+    $sql .= " LIMIT 10 ";
 
     $query = mysqli_query($conn, $sql);
     $data = [];
