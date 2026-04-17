@@ -328,13 +328,21 @@ $type           = "cutting-tambah-realisasi";
             }
         }).autocomplete({
             source: function(request, response) {
+                var term = extractLast(request.term);
+
+                // Jika term kosong (user baru ngetik koma), jangan cari ke database
+                if (term.trim() === "") {
+                    response([]);
+                    return;
+                }
+
                 var currentValues = split(this.element.val());
                 $.ajax({
                     url: "<?= $base_url ?>/pages/produksi/realisasi/cutting/data.php?page=cari-noop",
                     type: "GET",
                     dataType: "json",
                     data: {
-                        q: extractLast(request.term),
+                        q: term,
                         exact_code: parentExactCode,
                         exclude: currentValues.join(',')
                     },
