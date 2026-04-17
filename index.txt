@@ -1,0 +1,80 @@
+<main>
+    <div class="container-fluid">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 fw-bold text-dark"><i class="fas fa-cut me-2 text-primary"></i>Tambah Master Proses Cutting</h5>
+                <p class="text-muted small mb-0">Input parameter standar untuk proses pemotongan material.</p>
+            </div>
+            <div class="card-body p-4 form-custom">
+                <form id="formAddCutting">
+                    <div class="row">
+                        <div class="col-md-4 form-group-custom">
+                            <label>Kode Proses</label>
+                            <input type="text" class="form-control" name="kode_proses" placeholder="CUT-001" required>
+                        </div>
+                        <div class="col-md-8 form-group-custom">
+                            <label>Nama Proses Cutting</label>
+                            <input type="text" class="form-control" name="nama_proses" placeholder="Contoh: Cutting Fabric Foam 10mm" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 form-group-custom">
+                            <label>Mesin / Alat</label>
+                            <select class="form-select" name="id_mesin">
+                                <option value="">-- Pilih Mesin --</option>
+                                <option value="1">CNC Cutting Machine 01</option>
+                                <option value="2">Manual Cutter Box</option>
+                                <option value="3">Bandknife Machine</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group-custom">
+                            <label>Target Kapasitas (Pcs/Jam)</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" name="kapasitas" placeholder="0">
+                                <span class="input-group-text">Pcs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 form-group-custom">
+                            <label>SMV (Menit/Pcs)</label>
+                            <input type="number" step="0.01" class="form-control" name="smv" placeholder="0.00">
+                        </div>
+                        <div class="col-md-4 form-group-custom">
+                            <label>Toleransi Reject (%)</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" name="toleransi" placeholder="2">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group-custom">
+                            <label>Status Proses</label>
+                            <select class="form-select" name="status">
+                                <option value="Aktif">Aktif</option>
+                                <option value="Non-Aktif">Non-Aktif</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 form-group-custom">
+                            <label>Instruksi Kerja / Catatan Khusus</label>
+                            <textarea class="form-control" name="catatan" rows="3" placeholder="Masukkan instruksi pemotongan atau standar kualitas..."></textarea>
+                        </div>
+                    </div>
+
+                    <hr class="my-4 text-faded">
+
+                    <div class="text-end">
+                        <a href="master_proses.php" class="btn btn-light px-4 me-2">Batal</a>
+                        <button type="submit" class="btn btn-save-custom px-4">
+                            <i class="fas fa-save me-2"></i>Simpan Master Cutting
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>

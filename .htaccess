@@ -1,0 +1,97 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+
+    <Files .htaccess>
+        order allow,deny
+        deny from all
+    </Files>
+
+    Options -Indexes
+
+    RewriteRule ^dashboard$ index.php?page=dashboard [L]
+
+     # MPS #
+    RewriteRule ^masterplan$ index.php?page=masterplan [L]
+
+    # PRODUKSI #
+    RewriteRule ^produksi/masterproses/cutting$ index.php?page=produksi-masterproses-cutting [L]
+    RewriteRule ^produksi/masterproses/cutting/crud$ index.php?page=produksi-masterproses-cutting-crud [L]
+    RewriteRule ^produksi/masterproses/cutting/crud/([^/]+)$ index.php?page=produksi-masterproses-cutting-crud&id=$1 [L]
+
+    RewriteRule ^produksi/masterproses/edging$ index.php?page=produksi-masterproses-edging [L]
+    RewriteRule ^produksi/masterproses/edging/crud$ index.php?page=produksi-masterproses-edging-crud [L]
+    RewriteRule ^produksi/masterproses/edging/crud/([^/]+)$ index.php?page=produksi-masterproses-edging-crud&id=$1 [L]
+
+    
+
+    RewriteRule ^produksi/realisasi/cutting$ index.php?page=produksi-realisasi-cutting [L]
+    RewriteRule ^produksi/raalisasi/cutting/crud$ index.php?page=produksi-realisasi-cutting-crud [L]
+    RewriteRule ^produksi/realisasi/cutting/crud/([^/]+)$ index.php?page=produksi-realisasi-cutting-crud&id=$1 [L]
+
+
+
+
+    
+    RewriteRule ^produksi/cutting$ index.php?page=produksi-cutting [L]
+    RewriteRule ^produksi/edging$ index.php?page=produksi-edging [L]
+    RewriteRule ^produksi/bor$ index.php?page=produksi-bor [L]
+
+    # ACTIFITY #
+    RewriteRule ^activity/cutting$ index.php?page=activity-cutting [L]
+    RewriteRule ^activity/cutting/add$ index.php?page=activity-cutting-add [L]
+
+
+
+
+    # PRODUK #
+    RewriteRule ^produk$ index.php?page=produk [L]
+    RewriteRule ^produk/kategori$ index.php?page=produk-kategori [L]
+
+    # Penghuni #
+    RewriteRule ^penghuni$ index.php?page=penghuni [L]
+    RewriteRule ^penghuni/tambah$ index.php?page=penghuni-tambah [L]
+    RewriteRule ^penghuni/rubah/([0-9]+)$ index.php?page=penghuni-rubah&id=$1 [L]
+
+    # KAMAR #
+    RewriteRule ^daftar/kamar$ index.php?page=daftar-kamar [L]
+    RewriteRule ^daftar/kamar/tambah$ index.php?page=daftar-kamar-tambah [L]
+    RewriteRule ^daftar/kamar/rubah/([0-9]+)$ index.php?page=daftar-kamar-rubah&id=$1 [L]
+    RewriteRule ^lokasi$ index.php?page=lokasi [L]
+    RewriteRule ^lantai$ index.php?page=lantai [L]
+
+    # PENYEWAAN #
+    RewriteRule ^daftar/penyewa$ index.php?page=daftar-penyewa [L]
+    RewriteRule ^daftar/penyewa/tambah$ index.php?page=daftar-penyewa-tambah [L]
+    RewriteRule ^daftar/penyewa/cetak/invoice/([0-9]+)$ pages/penyewaan/daftar_penyewa/print_invoice.php?page=daftar-penyewa-cetak-invoice&id=$1 [L]
+    RewriteRule ^riwayat/penyewa$ index.php?page=riwayat-penyewa [L]
+
+    # KEUANGAN #
+    RewriteRule ^pemasukan$ index.php?page=pemasukan [L]
+    RewriteRule ^pengeluaran$ index.php?page=pengeluaran [L]
+    RewriteRule ^cashflow$ index.php?page=cashflow [L]
+    RewriteRule ^kategori$ index.php?page=kategori [L]
+
+    # LAPORAN #
+    RewriteRule ^laporan/pemasukan$ index.php?page=laporan-pemasukan [L]
+    RewriteRule ^laporan/pemasukan/cetak/([0-9-'-']+)/([0-9-'-']+)$ pages/laporan/pemasukan/print.php?page=laporan-pemasukan-cetak&tgl_awal=$1&tgl_akhir=$2 [L]
+    RewriteRule ^laporan/pengeluaran$ index.php?page=laporan-pengeluaran [L]
+    RewriteRule ^laporan/pengeluaran/cetak/([0-9-'-']+)/([0-9-'-']+)$ pages/laporan/pengeluaran/print.php?page=laporan-pengeluaran-cetak&tgl_awal=$1&tgl_akhir=$2 [L]
+    RewriteRule ^laporan/cashflow$ index.php?page=laporan-cashflow [L]
+    RewriteRule ^laporan/cashflow/cetak/([0-9-'-']+)/([0-9-'-']+)$ pages/laporan/cashflow/print.php?page=laporan-cashflow-cetak&tgl_awal=$1&tgl_akhir=$2 [L]
+
+    # MANAJEMEN USER #
+    RewriteRule ^manajemen/user$ index.php?page=manajemen-user [L]
+    RewriteRule ^manajemen/jabatan$ index.php?page=manajemen-jabatan [L]
+    RewriteRule ^manajemen/hak/akses$ index.php?page=manajemen-hak-akses [L]
+    RewriteRule ^manajemen/hak/akses/jabatan/([a-zA-Z0-9]+)$ index.php?page=manajemen-hak-akses&jabatan=$1 [L]
+    RewriteRule ^manajemen/menu$ index.php?page=manajemen-menu [L]
+
+    # PENGATURAN #
+    RewriteRule ^pengaturan$ index.php?page=pengaturan [L]
+
+    # DEFAULT #
+    RewriteRule ^halaman/tidak/ditemukan$ index.php?page=halaman-tidak-ditemukan [L]
+    RewriteRule ^profile$ index.php?page=profile [L]
+    RewriteRule ^login$ login.php [L]
+    RewriteRule ^logout$ index.php?page=logout [L]
+</IfModule>
